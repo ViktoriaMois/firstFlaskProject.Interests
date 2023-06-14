@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <link href="../static/css/allUsersList.css" rel="stylesheet">
+    <div class="container bootdey" style="margin-top: 20px">
+        <div class="row">
+            <div class="col">
+                <div class="user-widget-2">
+                    <ul class="list-unstyled">
+                        {% for user in users %}
+                            {% if user != current_user %}
+                                <li class="media">
+                                    <img class="rounded-circle d-flex align-self-center" style="object-fit: cover"
+                                         src={{ user.avatar }} alt="">
+                                    <div class="media-body">
+                                        <h5>{{ user.username }}</h5>
+                                        <p>{{ user.email }}</p>
+                                        {% if not current_user.is_added_friend(user) %}
+                                            <a href="{{ url_for("add_friend", username=user.username) }}"
+                                               class="btn btn-outline mt-1 mb-0" type="button"
+                                               style="background-color: #8DC26F">Add</a>
+                                            <a href="{{ url_for("see_profile", username=user.username) }}"
+                                               class="btn btn-outline mt-1 mb-0" type="button"
+                                               style="background-color: #8DC26F">See profile</a>
+                                        {% else %}
+                                            <a href="{{ url_for("contact", username=user.username) }}"
+                                               class="btn btn-outline mt-1 mb-0" type="button"
+                                               style="background-color: #8DC26F">Send message</a>
+                                            <a href="{{ url_for("remove_friend", username=user.username) }}"
+                                               class="btn btn-outline mt-1 mb-0" type="button"
+                                               style="background-color: #8DC26F">Delete</a>
+                                            <a href="{{ url_for("see_profile", username=user.username) }}"
+                                               class="btn btn-outline mt-1 mb-0" type="button"
+                                               style="background-color: #8DC26F">See profile</a>
+                                        {% endif %}
+                                    </div>
+                                    <i class="d-flex align-self-center fa fa-dot-circle-o color-success"></i></li>
+                            {% endif %}
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+    <ul class="colorlib-bubbles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+{% endblock %}

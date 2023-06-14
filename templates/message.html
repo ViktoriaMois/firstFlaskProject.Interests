@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- main -->
+<div class="main-w3layouts wrapper">
+    <h1>Your message</h1>
+    <div class="main-agileinfo">
+        <div class="agileits-top">
+            <form action="" method="post">
+                {{ form.hidden_tag() }}
+                <p style="margin-top: 20px; margin-left: 20px">
+                    {{ form.message.label }}<br>
+                    {{ form.message(size=1000) }}<br>
+                </p>
+                <p>{{ form.submit() }}</p>
+            </form>
+        </div>
+    </div>
+</div>
+<ul class="colorlib-bubbles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+<!-- //main -->
+{% endblock %}
